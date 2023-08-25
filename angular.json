@@ -3,5 +3,38 @@
   "version": 1,
   "newProjectRoot": "projects",
   "projects": {
+    "reproduce-transform-issue": {
+      "projectType": "library",
+      "root": "projects/reproduce-transform-issue",
+      "sourceRoot": "projects/reproduce-transform-issue/src",
+      "prefix": "lib",
+      "architect": {
+        "build": {
+          "builder": "@angular-devkit/build-angular:ng-packagr",
+          "options": {
+            "project": "projects/reproduce-transform-issue/ng-package.json"
+          },
+          "configurations": {
+            "production": {
+              "tsConfig": "projects/reproduce-transform-issue/tsconfig.lib.prod.json"
+            },
+            "development": {
+              "tsConfig": "projects/reproduce-transform-issue/tsconfig.lib.json"
+            }
+          },
+          "defaultConfiguration": "production"
+        },
+        "test": {
+          "builder": "@angular-devkit/build-angular:karma",
+          "options": {
+            "tsConfig": "projects/reproduce-transform-issue/tsconfig.spec.json",
+            "polyfills": [
+              "zone.js",
+              "zone.js/testing"
+            ]
+          }
+        }
+      }
+    }
   }
 }
